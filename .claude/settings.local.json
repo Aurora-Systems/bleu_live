@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Neon__list_projects",
+      "mcp__Neon__get_database_tables",
+      "mcp__Neon__get_connection_string",
+      "mcp__Neon__run_sql",
+      "Bash(pnpm install *)",
+      "Bash(pnpm add *)",
+      "Bash(curl -s -X POST https://api.resend.com/emails -H 'Authorization: Bearer re_EpAYVfox_AsLP1GiPT4cHDQNRGvepevMs' -H 'Content-Type: application/json' -d '{ *)"
+    ]
+  }
+}

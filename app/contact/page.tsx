@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
-import { createClient } from '@/lib/supabase/client'
 import { Mail, Globe, Linkedin, Twitter } from 'lucide-react'
 
 const contactInfo = [
@@ -45,12 +44,16 @@ export default function ContactPage() {
     setError('')
 
     try {
-      const supabase = createClient()
-      const { error: supabaseError } = await supabase
-        .from('contact_submissions')
-        .insert([formData])
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
 
-      if (supabaseError) throw supabaseError
+      if (!res.ok) {
+        const data = await res.json()
+        throw new Error(data.error || 'Something went wrong.')
+      }
 
       setIsSuccess(true)
       setFormData({
@@ -63,7 +66,7 @@ export default function ContactPage() {
       })
     } catch (err) {
       console.error('Contact form error:', err)
-      setError('Something went wrong. Please try again.')
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
@@ -76,7 +79,7 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="gradient-section pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <h1 className="font-serif text-4xl font-bold text-foreground sm:text-5xl text-balance">
+          <h1 className="font-display text-4xl font-bold text-foreground sm:text-5xl text-balance">
             Let&apos;s Talk
           </h1>
           <p className="mt-4 text-lg text-muted-foreground text-pretty">
@@ -141,7 +144,7 @@ export default function ContactPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h3 className="font-serif text-xl font-bold text-foreground">Message sent</h3>
+                  <h3 className="font-display text-xl font-bold text-foreground">Message sent</h3>
                   <p className="mt-2 text-muted-foreground">
                     We&apos;ll get back to you as soon as possible.
                   </p>

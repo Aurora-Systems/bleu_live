@@ -65,7 +65,7 @@ export default function BusinessPage() {
       <section className="relative min-h-[70vh] gradient-hero pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
-            <h1 className="font-serif text-4xl font-bold text-white sm:text-5xl lg:text-6xl text-balance">
+            <h1 className="font-display text-4xl font-bold text-white sm:text-5xl lg:text-6xl text-balance">
               Capital and Clarity for African Businesses
             </h1>
             <p className="mt-6 text-lg text-white/80 sm:text-xl text-pretty">
@@ -85,13 +85,13 @@ export default function BusinessPage() {
       {/* Who This Is For */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="mx-auto max-w-7xl">
-          <h2 className="font-serif text-3xl font-bold text-foreground sm:text-4xl text-center text-balance">
+          <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl text-center text-balance">
             Who This Is For
           </h2>
           <div className="mt-12 grid gap-8 md:grid-cols-2">
             {audiences.map((audience) => (
               <div key={audience.title} className="glass-card-blue rounded-2xl p-8">
-                <h3 className="font-serif text-2xl font-bold text-foreground">
+                <h3 className="font-display text-2xl font-bold text-foreground">
                   {audience.title}
                 </h3>
                 <p className="mt-4 text-muted-foreground">{audience.description}</p>
@@ -104,7 +104,7 @@ export default function BusinessPage() {
       {/* What We Offer */}
       <section className="gradient-section py-24 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <h2 className="font-serif text-3xl font-bold text-foreground sm:text-4xl text-center text-balance">
+          <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl text-center text-balance">
             What We Offer
           </h2>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -113,7 +113,7 @@ export default function BusinessPage() {
                 <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
                   <offering.icon className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="mt-4 font-serif text-lg font-bold text-foreground">
+                <h3 className="mt-4 font-display text-lg font-bold text-foreground">
                   {offering.title}
                 </h3>
                 <p className="mt-2 text-sm text-muted-foreground">{offering.description}</p>
@@ -126,7 +126,7 @@ export default function BusinessPage() {
       {/* Why Bleu */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="mx-auto max-w-7xl">
-          <h2 className="font-serif text-3xl font-bold text-foreground sm:text-4xl text-center text-balance">
+          <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl text-center text-balance">
             Why Bleu
           </h2>
           <div className="mt-12 grid gap-8 sm:grid-cols-3">
@@ -135,7 +135,7 @@ export default function BusinessPage() {
                 <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
                   <point.icon className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="mt-4 font-serif text-xl font-bold text-foreground">
+                <h3 className="mt-4 font-display text-xl font-bold text-foreground">
                   {point.title}
                 </h3>
                 <p className="mt-2 text-muted-foreground">{point.description}</p>
@@ -164,7 +164,7 @@ export default function BusinessPage() {
       {/* CTA Section */}
       <section className="gradient-hero py-24 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-serif text-3xl font-bold text-white sm:text-4xl text-balance">
+          <h2 className="font-display text-3xl font-bold text-white sm:text-4xl text-balance">
             Ready to grow your business?
           </h2>
           <p className="mt-4 text-lg text-white/80">

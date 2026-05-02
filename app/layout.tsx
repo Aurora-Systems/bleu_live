@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { DM_Sans, DM_Mono, Syne } from 'next/font/google'
+import { DM_Sans, DM_Mono, Syne, League_Spartan } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
@@ -16,10 +16,17 @@ const dmMono = DM_Mono({
   display: 'swap',
 })
 
-const syne = Syne({ 
+const syne = Syne({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
   variable: '--font-syne',
+  display: 'swap',
+})
+
+const leagueSpartan = League_Spartan({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-league-spartan',
   display: 'swap',
 })
 
@@ -44,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${dmMono.variable} ${syne.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${dmMono.variable} ${syne.variable} ${leagueSpartan.variable}`}>
       <body className={`${dmSans.className} antialiased`}>
         {children}
         <Analytics />

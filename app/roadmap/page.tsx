@@ -52,7 +52,7 @@ export default function RoadmapPage() {
       <section className="relative gradient-hero pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="font-serif text-4xl font-bold text-white sm:text-5xl lg:text-6xl text-balance">
+            <h1 className="font-display text-4xl font-bold text-white sm:text-5xl lg:text-6xl text-balance">
               Where We&apos;re Going
             </h1>
             <p className="mt-6 text-lg text-white/80 sm:text-xl text-pretty">
@@ -91,7 +91,7 @@ export default function RoadmapPage() {
                   </span>
                 </div>
 
-                <h3 className="font-serif text-2xl font-bold text-foreground">
+                <h3 className="font-display text-2xl font-bold text-foreground">
                   {phase.title}
                 </h3>
                 <p className="mt-3 text-muted-foreground">{phase.description}</p>
@@ -130,7 +130,7 @@ export default function RoadmapPage() {
       {/* CTA Section */}
       <section className="gradient-hero py-24 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-serif text-3xl font-bold text-white sm:text-4xl text-balance">
+          <h2 className="font-display text-3xl font-bold text-white sm:text-4xl text-balance">
             Want to be part of this journey?
           </h2>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">

@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from 'react'
-import { createClient } from '@/lib/supabase/client'
 import { Loader2, CheckCircle2, User, Building2 } from 'lucide-react'
 
 interface WaitlistFormProps {
@@ -25,20 +24,22 @@ export function WaitlistForm({ variant = 'section' }: WaitlistFormProps) {
     setError('')
 
     try {
-      const supabase = createClient()
-      const { error: supabaseError } = await supabase
-        .from('waitlist')
-        .insert([formData])
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
 
-      if (supabaseError) {
-        throw supabaseError
+      if (!res.ok) {
+        const data = await res.json()
+        throw new Error(data.error || 'Something went wrong.')
       }
 
       setIsSuccess(true)
       setFormData({ full_name: '', email: '', phone: '', user_type: 'individual' })
     } catch (err) {
       console.error('Waitlist submission error:', err)
-      setError('Something went wrong. Please try again.')
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
     } finally {
       setIsSubmitting(false)
     }

@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
-import { createClient } from '@/lib/supabase/client'
 import { Laptop, BarChart3, Globe, Coins } from 'lucide-react'
 
 const benefits = [
@@ -54,12 +53,16 @@ export default function PartnersPage() {
     setError('')
 
     try {
-      const supabase = createClient()
-      const { error: supabaseError } = await supabase
-        .from('partners_interest')
-        .insert([formData])
+      const res = await fetch('/api/partners', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
 
-      if (supabaseError) throw supabaseError
+      if (!res.ok) {
+        const data = await res.json()
+        throw new Error(data.error || 'Something went wrong.')
+      }
 
       setIsSuccess(true)
       setFormData({
@@ -71,7 +74,7 @@ export default function PartnersPage() {
       })
     } catch (err) {
       console.error('Partner form error:', err)
-      setError('Something went wrong. Please try again.')
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
@@ -85,7 +88,7 @@ export default function PartnersPage() {
       <section className="relative gradient-hero pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
-            <h1 className="font-serif text-4xl font-bold text-white sm:text-5xl lg:text-6xl text-balance">
+            <h1 className="font-display text-4xl font-bold text-white sm:text-5xl lg:text-6xl text-balance">
               Join Bleu&apos;s Lending Network
             </h1>
             <p className="mt-6 text-lg text-white/80 sm:text-xl text-pretty">
@@ -99,7 +102,7 @@ export default function PartnersPage() {
       {/* The Opportunity */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="mx-auto max-w-4xl">
-          <h2 className="font-serif text-3xl font-bold text-foreground sm:text-4xl text-center text-balance">
+          <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl text-center text-balance">
             The Opportunity
           </h2>
           <p className="mt-6 text-lg text-muted-foreground text-center text-pretty">
@@ -111,7 +114,7 @@ export default function PartnersPage() {
       {/* What Partners Get */}
       <section className="gradient-section py-24 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <h2 className="font-serif text-3xl font-bold text-foreground sm:text-4xl text-center text-balance">
+          <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl text-center text-balance">
             What Partners Get
           </h2>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -120,7 +123,7 @@ export default function PartnersPage() {
                 <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
                   <benefit.icon className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="mt-4 font-serif text-lg font-bold text-foreground">
+                <h3 className="mt-4 font-display text-lg font-bold text-foreground">
                   {benefit.title}
                 </h3>
                 <p className="mt-2 text-sm text-muted-foreground">{benefit.description}</p>
@@ -133,7 +136,7 @@ export default function PartnersPage() {
       {/* Who Should Apply */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="mx-auto max-w-4xl">
-          <h2 className="font-serif text-3xl font-bold text-foreground sm:text-4xl text-center text-balance">
+          <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl text-center text-balance">
             Who Should Apply
           </h2>
           <div className="mt-12 grid gap-4 sm:grid-cols-2">
@@ -151,7 +154,7 @@ export default function PartnersPage() {
       <section className="gradient-hero py-24 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl">
           <div className="text-center mb-12">
-            <h2 className="font-serif text-3xl font-bold text-white sm:text-4xl text-balance">
+            <h2 className="font-display text-3xl font-bold text-white sm:text-4xl text-balance">
               Interested in joining the Bleu network?
             </h2>
           </div>
@@ -163,7 +166,7 @@ export default function PartnersPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="font-serif text-xl font-bold text-white">Thank you</h3>
+              <h3 className="font-display text-xl font-bold text-white">Thank you</h3>
               <p className="mt-2 text-white/80">
                 A member of our team will be in touch within 3 business days.
               </p>

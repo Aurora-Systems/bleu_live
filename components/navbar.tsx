@@ -29,7 +29,7 @@ export function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass-nav shadow-sm py-3' : 'bg-transparent py-5'
+        isScrolled ? 'glass-nav shadow-sm py-3' : 'bg-white/80 backdrop-blur-md border-b border-primary/10 py-5'
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -52,22 +52,14 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`rounded-lg px-4 py-2 text-sm font-medium transition-all ${
-                  isScrolled 
-                    ? 'text-foreground hover:bg-primary/5 hover:text-primary' 
-                    : 'text-white/90 hover:bg-white/10 hover:text-white'
-                }`}
+                className={`rounded-lg px-4 py-2 text-sm font-medium transition-all text-foreground hover:bg-primary/5 hover:text-primary`}
               >
                 {link.label}
               </Link>
             ))}
             <Link
               href="/#waitlist"
-              className={`ml-4 rounded-lg px-5 py-2.5 text-sm font-semibold shadow-sm transition-all ${
-                isScrolled
-                  ? 'bg-primary text-white hover:bg-primary/90'
-                  : 'bg-white text-primary hover:bg-white/90'
-              }`}
+              className="ml-4 rounded-lg px-5 py-2.5 text-sm font-semibold shadow-sm transition-all bg-primary text-white hover:bg-primary/90"
             >
               Join Waitlist
             </Link>
@@ -76,11 +68,7 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`rounded-lg p-2 md:hidden ${
-              isScrolled 
-                ? 'text-foreground hover:bg-primary/5' 
-                : 'text-white hover:bg-white/10'
-            }`}
+            className="rounded-lg p-2 md:hidden text-foreground hover:bg-primary/5"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}

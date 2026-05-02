@@ -41,7 +41,7 @@ export default function IndividualsPage() {
             <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary mb-6">
               Coming soon for individuals — join the waitlist
             </div>
-            <h1 className="font-serif text-4xl font-bold text-foreground sm:text-5xl lg:text-6xl text-balance">
+            <h1 className="font-display text-4xl font-bold text-foreground sm:text-5xl lg:text-6xl text-balance">
               A Financial Safety Net — When You Need It
             </h1>
             <p className="mt-6 text-lg text-muted-foreground sm:text-xl text-pretty">
@@ -54,7 +54,7 @@ export default function IndividualsPage() {
       {/* What's Coming */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="mx-auto max-w-7xl">
-          <h2 className="font-serif text-3xl font-bold text-foreground sm:text-4xl text-center text-balance">
+          <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl text-center text-balance">
             What&apos;s Coming
           </h2>
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -63,7 +63,7 @@ export default function IndividualsPage() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
                   <feature.icon className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="mt-6 font-serif text-xl font-bold text-foreground">
+                <h3 className="mt-6 font-display text-xl font-bold text-foreground">
                   {feature.title}
                 </h3>
                 <p className="mt-3 text-muted-foreground">{feature.description}</p>
@@ -77,7 +77,7 @@ export default function IndividualsPage() {
       <section className="gradient-section py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-12">
-            <h2 className="font-serif text-3xl font-bold text-foreground sm:text-4xl text-balance">
+            <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl text-balance">
               The Bleu App
             </h2>
             <p className="mt-4 text-muted-foreground">Currently in select access</p>
@@ -129,7 +129,7 @@ export default function IndividualsPage() {
       {/* How It Will Work */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="mx-auto max-w-4xl">
-          <h2 className="font-serif text-3xl font-bold text-foreground sm:text-4xl text-center text-balance">
+          <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl text-center text-balance">
             How It Will Work
           </h2>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -138,7 +138,7 @@ export default function IndividualsPage() {
                 <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary text-xl font-bold text-white">
                   {step.number}
                 </div>
-                <h3 className="mt-4 font-serif font-semibold text-foreground">
+                <h3 className="mt-4 font-display font-semibold text-foreground">
                   {step.title}
                 </h3>
               </div>
@@ -152,7 +152,7 @@ export default function IndividualsPage() {
         <div className="mx-auto max-w-7xl">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div className="text-center lg:text-left">
-              <h2 className="font-serif text-3xl font-bold text-white sm:text-4xl text-balance">
+              <h2 className="font-display text-3xl font-bold text-white sm:text-4xl text-balance">
                 Be among the first to access Bleu
               </h2>
               <p className="mt-4 text-lg text-white/80 text-pretty">
