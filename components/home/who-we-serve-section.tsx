@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Building2, User, ArrowRight, Check } from 'lucide-react'
 import { Container, Eyebrow } from '@/components/site'
+import { APP_URL } from '@/lib/site'
 
 const BUSINESS_POINTS = [
   'Working capital loans',
@@ -63,13 +64,13 @@ export function WhoWeServeSection() {
               <h3 className="m-0 font-display text-[26px] font-normal leading-[1.1] text-ink">
                 Individuals
               </h3>
-              <span className="rounded-full bg-tint px-2.5 py-1 font-sans text-[11px] font-bold uppercase leading-none tracking-[0.06em] text-brand">
-                Coming soon
+              <span className="rounded-full bg-brand px-2.5 py-1 font-sans text-[11px] font-bold uppercase leading-none tracking-[0.06em] text-white">
+                Now live
               </span>
             </div>
             <p className="m-0 mb-6 max-w-[420px] font-sans text-[15px] font-medium leading-[1.6] text-body-2">
-              Personal loan access for emergencies, education and more.
-              Currently in select access. Join the waitlist for early entry.
+              Personal loan access for emergencies, education and more, now
+              live. Apply in minutes on the Bleu app.
             </p>
             <ul className="m-0 mb-8 flex flex-col gap-3 p-0">
               {INDIVIDUAL_POINTS.map((p) => (
@@ -79,12 +80,14 @@ export function WhoWeServeSection() {
                 </li>
               ))}
             </ul>
-            <Link
-              href="/#waitlist"
+            <a
+              href={APP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg bg-brand px-6 py-3.5 font-sans text-[14px] font-bold leading-none text-white transition-colors hover:bg-brand-dark"
             >
-              Join the waitlist <ArrowRight size={16} />
-            </Link>
+              Apply on the app <ArrowRight size={16} />
+            </a>
           </div>
         </div>
       </Container>

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Instagram } from 'lucide-react'
+import { APP_URL } from '@/lib/site'
 
 const NAV_LINKS = [
   { href: '/business', label: 'Business' },
@@ -102,12 +103,14 @@ export function Footer() {
               >
                 bleubank.xyz
               </a>
-              <Link
-                href="/#waitlist"
+              <a
+                href={APP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-1.5 inline-block rounded-lg bg-brand px-5 py-[11px] text-center font-sans text-[13px] font-bold leading-none text-white transition-colors hover:bg-brand-bright"
               >
-                Join the waitlist
-              </Link>
+                Apply on the app
+              </a>
             </div>
           </div>
         </div>

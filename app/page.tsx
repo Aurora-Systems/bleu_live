@@ -6,7 +6,7 @@ import { WhatWeDoSection } from '@/components/home/what-we-do-section'
 import { WhyBleuSection } from '@/components/home/why-bleu-section'
 import { HowItWorksSection } from '@/components/home/how-it-works-section'
 import { WhoWeServeSection } from '@/components/home/who-we-serve-section'
-import { WaitlistSection } from '@/components/home/waitlist-section'
+import { AppCtaSection } from '@/components/home/app-cta-section'
 
 export default function HomePage() {
   return (
@@ -19,7 +19,7 @@ export default function HomePage() {
         <WhyBleuSection />
         <HowItWorksSection />
         <WhoWeServeSection />
-        <WaitlistSection />
+        <AppCtaSection />
       </main>
       <Footer />
     </>

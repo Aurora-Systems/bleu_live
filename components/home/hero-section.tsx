@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Container, ImageSlot } from '@/components/site'
 import { photos } from '@/lib/images'
+import { APP_URL } from '@/lib/site'
 
 const STATS = [
   { value: '500+', label: 'Loans\ndisbursed' },
@@ -16,32 +17,35 @@ export function HeroSection() {
           <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-line-2 bg-surface px-4 py-2">
             <span className="h-2 w-2 rounded-full bg-brand" />
             <span className="font-sans text-[13px] font-semibold leading-none text-body">
-              Now serving businesses across Africa
+              Now lending to businesses and individuals
             </span>
           </div>
 
           <h1 className="m-0 mb-[22px] font-display text-[38px] font-normal leading-[1.04] text-ink sm:text-[52px] lg:text-[62px]">
-            Money and guidance to help your business{' '}
+            Money and guidance to help you{' '}
             <span className="text-brand">grow.</span>
           </h1>
 
           <p className="m-0 mb-8 max-w-[480px] text-pretty font-sans text-[19px] font-medium leading-[1.65] text-body">
-            Bleu gives African businesses fast loans, honest advice, and real
-            access to capital, built for the way the continent actually works.
+            Bleu gives African businesses and individuals fast loans, honest
+            advice, and real access to capital, built for the way the continent
+            actually works.
           </p>
 
           <div className="mb-10 flex flex-wrap items-center gap-[14px]">
-            <Link
-              href="/business"
+            <a
+              href={APP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-lg bg-brand px-[30px] py-4 font-sans text-[15px] font-bold leading-none text-white transition-colors hover:bg-brand-dark"
             >
-              Explore business loans
-            </Link>
+              Apply on the app
+            </a>
             <Link
-              href="/#waitlist"
+              href="/business"
               className="rounded-lg border-[1.5px] border-line-2 bg-transparent px-[26px] py-4 font-sans text-[15px] font-bold leading-none text-ink transition-colors hover:border-ink"
             >
-              Join the waitlist
+              Explore business loans
             </Link>
           </div>
 

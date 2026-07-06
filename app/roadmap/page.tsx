@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { Container, PageHero } from '@/components/site'
+import { APP_URL } from '@/lib/site'
 import { Check, Lock } from 'lucide-react'
 
 const PHASES = [
@@ -10,11 +11,11 @@ const PHASES = [
     title: 'Lending & Advisory',
     status: 'Live',
     isActive: true,
-    body: 'We are actively disbursing business loans and providing financial advisory services to SMEs and startups across Africa.',
+    body: 'We are actively disbursing business and personal loans and providing financial advisory services to SMEs, startups and individuals across Africa.',
     features: [
       { text: 'Business loan disbursement', done: true },
+      { text: 'Personal loans for individuals', done: true },
       { text: 'Financial advisory for startups', done: true },
-      { text: 'Capital access facilitation', done: true },
       { text: 'Collateral-free lending', done: true },
     ],
   },
@@ -120,12 +121,14 @@ export default function RoadmapPage() {
                 Want to be part of this journey?
               </h2>
               <div className="flex flex-col justify-center gap-4 sm:flex-row">
-                <Link
-                  href="/#waitlist"
+                <a
+                  href={APP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="rounded-lg bg-white px-[30px] py-4 font-sans text-[15px] font-bold leading-none text-brand transition-colors hover:bg-brand-soft"
                 >
-                  Join the waitlist
-                </Link>
+                  Apply on the app
+                </a>
                 <Link
                   href="/partners"
                   className="rounded-lg border-[1.5px] border-white/50 px-[28px] py-4 font-sans text-[15px] font-bold leading-none text-white transition-colors hover:border-white"

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
+import { APP_URL } from '@/lib/site'
 
 const NAV = [
   { href: '/', label: 'Home', match: (p: string) => p === '/' },
@@ -52,12 +53,14 @@ export function Navbar() {
         </nav>
 
         {/* Desktop CTA */}
-        <Link
-          href="/#waitlist"
+        <a
+          href={APP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="hidden rounded-lg bg-brand px-[22px] py-3 font-sans text-[14px] font-bold leading-none text-white transition-colors hover:bg-brand-dark lg:inline-block"
         >
-          Join Waitlist
-        </Link>
+          Apply now
+        </a>
 
         {/* Mobile toggle */}
         <button
@@ -90,13 +93,15 @@ export function Navbar() {
                 </Link>
               )
             })}
-            <Link
-              href="/#waitlist"
+            <a
+              href={APP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setOpen(false)}
               className="mt-2 rounded-lg bg-brand px-[22px] py-3 text-center font-sans text-[14px] font-bold leading-none text-white transition-colors hover:bg-brand-dark"
             >
-              Join Waitlist
-            </Link>
+              Apply now
+            </a>
           </div>
         </nav>
       ) : null}

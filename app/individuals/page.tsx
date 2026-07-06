@@ -2,7 +2,8 @@ import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { Container, PageHero, SectionHeading, ImageSlot } from '@/components/site'
 import { mockups } from '@/lib/images'
-import { WaitlistSection } from '@/components/home/waitlist-section'
+import { AppCtaSection } from '@/components/home/app-cta-section'
+import { APP_URL } from '@/lib/site'
 import { AlertCircle, Shield, Zap } from 'lucide-react'
 
 const FEATURES = [
@@ -36,15 +37,28 @@ export default function IndividualsPage() {
       <Navbar />
       <main>
         <PageHero
-          pill="Coming soon for individuals"
+          pill="Personal loans, now live"
           title="A financial safety net, for when you need it"
-          subtitle="Bleu is building personal loan access for individuals across Africa. No unnecessary hoops, no hidden fees, just help when it matters."
+          subtitle="Bleu now offers personal loan access for individuals across Africa. No unnecessary hoops, no hidden fees, just help when it matters."
         />
 
-        {/* What's coming */}
+        <section className="pb-4 pt-2">
+          <Container className="flex justify-center">
+            <a
+              href={APP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg bg-brand px-[30px] py-4 font-sans text-[15px] font-bold leading-none text-white transition-colors hover:bg-brand-dark"
+            >
+              Apply on the Bleu app
+            </a>
+          </Container>
+        </section>
+
+        {/* What you get */}
         <section className="py-[52px]">
           <Container>
-            <SectionHeading center title="What’s coming" />
+            <SectionHeading center title="What you get" />
             <div className="mt-[34px] grid grid-cols-1 gap-[22px] md:grid-cols-3">
               {FEATURES.map(({ Icon, title, body }) => (
                 <div key={title} className="rounded-2xl border border-line bg-surface px-8 py-9">
@@ -68,7 +82,7 @@ export default function IndividualsPage() {
           <Container>
             <SectionHeading center title="The Bleu app" />
             <p className="mx-auto mt-3 max-w-[520px] text-center font-sans text-[16px] font-medium leading-[1.6] text-body-2">
-              Currently in select access.
+              Everything you need to apply, track and repay, all in one place.
             </p>
             <div className="mt-[34px] grid grid-cols-1 gap-5 sm:grid-cols-3">
               {[
@@ -92,7 +106,7 @@ export default function IndividualsPage() {
         <section className="py-[52px]">
           <Container>
             <div className="rounded-[20px] border border-line bg-surface px-6 py-12 sm:px-11">
-              <SectionHeading center title="How it will work" />
+              <SectionHeading center title="How it works" />
               <div className="mt-9 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 {STEPS.map((s) => (
                   <div key={s.n} className="text-center">
@@ -109,7 +123,7 @@ export default function IndividualsPage() {
           </Container>
         </section>
 
-        <WaitlistSection />
+        <AppCtaSection />
       </main>
       <Footer />
     </>

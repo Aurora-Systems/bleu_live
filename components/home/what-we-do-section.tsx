@@ -20,8 +20,7 @@ const PRODUCTS = [
     href: '/individuals',
     Icon: Users,
     title: 'Individual Loans',
-    body: 'Personal and emergency loans built for real life. Coming soon. Join the waitlist.',
-    comingSoon: true,
+    body: 'Personal and emergency loans built for real life, now available on the Bleu app.',
   },
   {
     href: '/partners',
@@ -51,7 +50,7 @@ export function WhatWeDoSection() {
         </div>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {PRODUCTS.map(({ href, Icon, title, body, dark, comingSoon }) => (
+          {PRODUCTS.map(({ href, Icon, title, body, dark }) => (
             <Link
               key={title}
               href={href}
@@ -64,11 +63,6 @@ export function WhatWeDoSection() {
               <div className={`mb-4 ${dark ? 'text-brand-soft' : 'text-brand'}`}>
                 <Icon size={28} strokeWidth={1.6} />
               </div>
-              {comingSoon ? (
-                <span className="mb-2 inline-block rounded-full bg-tint px-2.5 py-1 font-sans text-[11px] font-bold uppercase leading-none tracking-[0.06em] text-brand">
-                  Coming soon
-                </span>
-              ) : null}
               <div
                 className={`mb-2 font-display text-[22px] font-normal leading-[1.12] ${
                   dark ? 'text-white' : 'text-ink'
