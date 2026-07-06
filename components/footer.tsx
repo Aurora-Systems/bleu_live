@@ -1,9 +1,7 @@
 import Link from 'next/link'
-import Image from 'next/image'
-import { Linkedin, Twitter, Mail, Globe } from 'lucide-react'
+import { Instagram } from 'lucide-react'
 
-const footerLinks = [
-  { href: '/', label: 'Home' },
+const NAV_LINKS = [
   { href: '/business', label: 'Business' },
   { href: '/individuals', label: 'Individuals' },
   { href: '/partners', label: 'Partners' },
@@ -11,120 +9,123 @@ const footerLinks = [
   { href: '/contact', label: 'Contact' },
 ]
 
-const legalLinks = [
+const LEGAL_LINKS = [
   { href: '/privacy', label: 'Privacy Policy' },
   { href: '/terms', label: 'Terms of Service' },
 ]
 
+const SOCIALS = [
+  { href: 'https://www.instagram.com/bleu.access/', label: 'Instagram', Icon: Instagram },
+]
+
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-gradient-to-b from-white to-secondary/30">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
-          {/* Logo and Mission */}
-          <div className="lg:col-span-2">
-            <Image
-              src="https://bleubank.sirv.com/logo.png"
-              alt="Bleu Logo"
-              width={100}
-              height={40}
-              className="h-10"
-              style={{ width: 'auto' }}
-            />
-            <p className="mt-4 max-w-md text-muted-foreground leading-relaxed">
-              Financial access for Africa. We provide loans, financial advice, and access to capital for businesses and individuals across the continent.
+    <footer className="bg-ink pb-[34px] pt-16 text-cloud">
+      <div className="mx-auto max-w-[1180px] px-5 sm:px-8 lg:px-10">
+        <div className="grid grid-cols-1 gap-10 border-b border-ink-line pb-11 md:grid-cols-[1.6fr_1fr_1fr] lg:grid-cols-[1.8fr_1fr_1fr_1.2fr]">
+          {/* Brand */}
+          <div>
+            <div className="mb-4 font-display text-[24px] font-semibold leading-none text-white">
+              Bleu
+            </div>
+            <p className="m-0 mb-5 max-w-[300px] font-sans text-[14px] font-medium leading-[1.65] text-cloud-2">
+              Financial access for Africa: loans, advice, and real access to
+              capital for businesses and individuals, without the traditional
+              barriers.
             </p>
-            <div className="mt-6 flex gap-3">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/5 text-muted-foreground transition-all hover:bg-primary hover:text-white"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={18} />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/5 text-muted-foreground transition-all hover:bg-primary hover:text-white"
-                aria-label="Twitter"
-              >
-                <Twitter size={18} />
-              </a>
-              <a
-                href="mailto:hello@bleubank.xyz"
-                className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/5 text-muted-foreground transition-all hover:bg-primary hover:text-white"
-                aria-label="Email"
-              >
-                <Mail size={18} />
+            <div className="flex gap-2.5">
+              {SOCIALS.map(({ href, label, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-ink-line text-cloud-2 transition-colors hover:border-brand-soft hover:text-white"
+                >
+                  <Icon size={17} />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Explore */}
+          <div>
+            <div className="mb-[18px] font-sans text-[13px] font-bold uppercase leading-none tracking-[0.08em] text-cloud-2">
+              Explore
+            </div>
+            <div className="flex flex-col gap-3 font-sans text-[14px] font-medium leading-none">
+              {NAV_LINKS.map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="text-cloud transition-colors hover:text-white"
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <div className="mb-[18px] font-sans text-[13px] font-bold uppercase leading-none tracking-[0.08em] text-cloud-2">
+              Legal
+            </div>
+            <div className="flex flex-col gap-3 font-sans text-[14px] font-medium leading-none">
+              {LEGAL_LINKS.map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="text-cloud transition-colors hover:text-white"
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Get in touch */}
+          <div>
+            <div className="mb-[18px] font-sans text-[13px] font-bold uppercase leading-none tracking-[0.08em] text-cloud-2">
+              Get in touch
+            </div>
+            <div className="flex flex-col gap-3 font-sans text-[14px] font-medium leading-[1.5]">
+              <a href="mailto:hello@bleubank.xyz" className="text-brand-soft">
+                hello@bleubank.xyz
               </a>
               <a
                 href="https://bleubank.xyz"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/5 text-muted-foreground transition-all hover:bg-primary hover:text-white"
-                aria-label="Website"
+                className="text-cloud transition-colors hover:text-white"
               >
-                <Globe size={18} />
+                bleubank.xyz
               </a>
+              <Link
+                href="/#waitlist"
+                className="mt-1.5 inline-block rounded-lg bg-brand px-5 py-[11px] text-center font-sans text-[13px] font-bold leading-none text-white transition-colors hover:bg-brand-bright"
+              >
+                Join the waitlist
+              </Link>
             </div>
-          </div>
-
-          {/* Navigation Links */}
-          <div>
-            <h3 className="font-display text-sm font-semibold text-foreground uppercase tracking-wider">Navigation</h3>
-            <ul className="mt-4 space-y-3">
-              {footerLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-muted-foreground transition-colors hover:text-primary"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal Links & Contact */}
-          <div>
-            <h3 className="font-display text-sm font-semibold text-foreground uppercase tracking-wider">Legal</h3>
-            <ul className="mt-4 space-y-3">
-              {legalLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-muted-foreground transition-colors hover:text-primary"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            
-            <h3 className="mt-8 font-display text-sm font-semibold text-foreground uppercase tracking-wider">Contact</h3>
-            <ul className="mt-4 space-y-3">
-              <li>
-                <a href="mailto:hello@bleubank.xyz" className="text-muted-foreground transition-colors hover:text-primary">
-                  hello@bleubank.xyz
-                </a>
-              </li>
-              <li>
-                <a href="https://bleubank.xyz" target="_blank" rel="noopener noreferrer" className="text-muted-foreground transition-colors hover:text-primary">
-                  bleubank.xyz
-                </a>
-              </li>
-            </ul>
           </div>
         </div>
 
-        <div className="mt-12 border-t border-border pt-8">
-          <p className="text-center text-sm text-muted-foreground">
-            &copy; 2025 Bleu. All rights reserved.
-          </p>
+        <div className="flex flex-col gap-3 pt-[26px] font-sans text-[13px] font-medium leading-[1.5] text-cloud-2 sm:flex-row sm:items-center sm:justify-between">
+          <span>© 2026 Bleu. All rights reserved.</span>
+          <span>
+            Bleu is a subsidiary of{' '}
+            <a
+              href="https://attributeai.xyz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-cloud transition-colors hover:text-white"
+            >
+              AttributeAI, LLC
+            </a>
+            .
+          </span>
         </div>
       </div>
     </footer>

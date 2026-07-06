@@ -1,13 +1,9 @@
 "use client"
 
 import { useState } from 'react'
-import { Loader2, CheckCircle2, User, Building2 } from 'lucide-react'
+import { Loader2, Check, User, Building2 } from 'lucide-react'
 
-interface WaitlistFormProps {
-  variant?: 'hero' | 'section'
-}
-
-export function WaitlistForm({ variant = 'section' }: WaitlistFormProps) {
+export function WaitlistForm() {
   const [formData, setFormData] = useState({
     full_name: '',
     email: '',
@@ -45,36 +41,32 @@ export function WaitlistForm({ variant = 'section' }: WaitlistFormProps) {
     }
   }
 
-  const isHero = variant === 'hero'
-  const cardClass = isHero ? 'glass-card-white' : 'glass-card-blue'
-  const textClass = isHero ? 'text-white' : 'text-foreground'
-  const mutedTextClass = isHero ? 'text-white/70' : 'text-muted-foreground'
-  const inputClass = isHero 
-    ? 'bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40 focus:ring-white/20' 
-    : 'bg-white border-primary/10 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20'
-
   if (isSuccess) {
     return (
-      <div className={`rounded-2xl p-8 text-center ${cardClass}`}>
-        <div className={`mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full ${isHero ? 'bg-green-400/20' : 'bg-green-100'}`}>
-          <CheckCircle2 className={`h-8 w-8 ${isHero ? 'text-green-300' : 'text-green-600'}`} />
+      <div className="rounded-2xl bg-surface p-8 text-center shadow-[0_18px_50px_rgba(16,26,51,0.14)]">
+        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-tint text-brand">
+          <Check size={28} />
         </div>
-        <h3 className={`font-display text-xl font-bold ${textClass}`}>
-          You&apos;re on the list
-        </h3>
-        <p className={`mt-2 ${mutedTextClass}`}>
+        <h3 className="m-0 font-display text-[20px] font-normal text-ink">You&apos;re on the list</h3>
+        <p className="m-0 mt-2 font-sans text-[15px] font-medium text-body-2">
           We&apos;ll be in touch soon with updates.
         </p>
       </div>
     )
   }
 
+  const inputClass =
+    'mt-2 block w-full rounded-xl border border-line-2 bg-surface px-4 py-3.5 font-sans text-[15px] text-ink placeholder:text-caption transition-colors focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/15'
+
   return (
-    <form onSubmit={handleSubmit} className={`rounded-2xl p-6 md:p-8 ${cardClass}`}>
+    <form
+      onSubmit={handleSubmit}
+      className="rounded-2xl bg-surface p-6 shadow-[0_18px_50px_rgba(16,26,51,0.14)] md:p-8"
+    >
       <div className="space-y-5">
         <div>
-          <label htmlFor="full_name" className={`block text-sm font-medium ${textClass}`}>
-            Full Name
+          <label htmlFor="full_name" className="block font-sans text-[14px] font-semibold text-ink">
+            Full name
           </label>
           <input
             type="text"
@@ -82,14 +74,14 @@ export function WaitlistForm({ variant = 'section' }: WaitlistFormProps) {
             required
             value={formData.full_name}
             onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
-            className={`mt-2 block w-full rounded-xl border px-4 py-3.5 backdrop-blur-sm transition-all focus:outline-none focus:ring-2 ${inputClass}`}
+            className={inputClass}
             placeholder="Enter your full name"
           />
         </div>
 
         <div>
-          <label htmlFor="email" className={`block text-sm font-medium ${textClass}`}>
-            Email Address
+          <label htmlFor="email" className="block font-sans text-[14px] font-semibold text-ink">
+            Email address
           </label>
           <input
             type="email"
@@ -97,14 +89,14 @@ export function WaitlistForm({ variant = 'section' }: WaitlistFormProps) {
             required
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className={`mt-2 block w-full rounded-xl border px-4 py-3.5 backdrop-blur-sm transition-all focus:outline-none focus:ring-2 ${inputClass}`}
+            className={inputClass}
             placeholder="you@example.com"
           />
         </div>
 
         <div>
-          <label htmlFor="phone" className={`block text-sm font-medium ${textClass}`}>
-            Phone Number
+          <label htmlFor="phone" className="block font-sans text-[14px] font-semibold text-ink">
+            Phone number
           </label>
           <input
             type="tel"
@@ -112,85 +104,64 @@ export function WaitlistForm({ variant = 'section' }: WaitlistFormProps) {
             required
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-            className={`mt-2 block w-full rounded-xl border px-4 py-3.5 backdrop-blur-sm transition-all focus:outline-none focus:ring-2 ${inputClass}`}
-            placeholder="+234 800 000 0000"
+            className={inputClass}
+            placeholder="+263 000 000 000"
           />
         </div>
 
         <div>
-          <label className={`block text-sm font-medium mb-3 ${textClass}`}>
-            I am a
-          </label>
+          <span className="mb-3 block font-sans text-[14px] font-semibold text-ink">I am a</span>
           <div className="grid grid-cols-2 gap-3">
-            <label 
-              className={`flex items-center justify-center gap-2 rounded-xl border p-4 cursor-pointer transition-all ${
-                formData.user_type === 'individual' 
-                  ? isHero 
-                    ? 'border-white bg-white/20 text-white' 
-                    : 'border-primary bg-primary/10 text-primary'
-                  : isHero
-                    ? 'border-white/20 bg-white/5 text-white/80 hover:bg-white/10'
-                    : 'border-primary/10 bg-white text-muted-foreground hover:bg-primary/5'
-              }`}
-            >
-              <input
-                type="radio"
-                name="user_type"
-                value="individual"
-                checked={formData.user_type === 'individual'}
-                onChange={(e) => setFormData({ ...formData, user_type: e.target.value })}
-                className="sr-only"
-              />
-              <User className="h-5 w-5" />
-              <span className="font-medium">Individual</span>
-            </label>
-            <label 
-              className={`flex items-center justify-center gap-2 rounded-xl border p-4 cursor-pointer transition-all ${
-                formData.user_type === 'business' 
-                  ? isHero 
-                    ? 'border-white bg-white/20 text-white' 
-                    : 'border-primary bg-primary/10 text-primary'
-                  : isHero
-                    ? 'border-white/20 bg-white/5 text-white/80 hover:bg-white/10'
-                    : 'border-primary/10 bg-white text-muted-foreground hover:bg-primary/5'
-              }`}
-            >
-              <input
-                type="radio"
-                name="user_type"
-                value="business"
-                checked={formData.user_type === 'business'}
-                onChange={(e) => setFormData({ ...formData, user_type: e.target.value })}
-                className="sr-only"
-              />
-              <Building2 className="h-5 w-5" />
-              <span className="font-medium">Business</span>
-            </label>
+            {(
+              [
+                { value: 'individual', label: 'Individual', Icon: User },
+                { value: 'business', label: 'Business', Icon: Building2 },
+              ] as const
+            ).map(({ value, label, Icon }) => {
+              const selected = formData.user_type === value
+              return (
+                <label
+                  key={value}
+                  className={`flex cursor-pointer items-center justify-center gap-2 rounded-xl border p-4 font-sans text-[14px] font-semibold transition-colors ${
+                    selected
+                      ? 'border-brand bg-tint text-brand'
+                      : 'border-line-2 bg-surface text-body-2 hover:border-brand/40'
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    name="user_type"
+                    value={value}
+                    checked={selected}
+                    onChange={(e) => setFormData({ ...formData, user_type: e.target.value })}
+                    className="sr-only"
+                  />
+                  <Icon size={18} />
+                  <span>{label}</span>
+                </label>
+              )
+            })}
           </div>
         </div>
 
         {error && (
-          <div className="rounded-lg bg-red-500/10 border border-red-500/20 px-4 py-3">
-            <p className="text-sm text-red-500">{error}</p>
+          <div className="rounded-lg border border-destructive/20 bg-destructive/10 px-4 py-3">
+            <p className="m-0 font-sans text-[14px] text-destructive">{error}</p>
           </div>
         )}
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className={`w-full rounded-xl px-6 py-4 font-semibold shadow-lg transition-all disabled:cursor-not-allowed disabled:opacity-50 ${
-            isHero 
-              ? 'bg-white text-primary hover:bg-white/90' 
-              : 'bg-primary text-white hover:bg-primary/90'
-          }`}
+          className="w-full rounded-xl bg-brand px-6 py-4 font-sans text-[15px] font-bold text-white transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isSubmitting ? (
             <span className="flex items-center justify-center gap-2">
-              <Loader2 className="h-5 w-5 animate-spin" />
-              Joining...
+              <Loader2 size={18} className="animate-spin" />
+              Joining…
             </span>
           ) : (
-            'Join Waitlist'
+            'Join the waitlist'
           )}
         </button>
       </div>

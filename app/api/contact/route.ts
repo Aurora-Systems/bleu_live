@@ -28,7 +28,7 @@ export async function POST(request: Request) {
         <table cellpadding="8" style="border-collapse:collapse;">
           <tr><td><strong>Name</strong></td><td>${full_name}</td></tr>
           <tr><td><strong>Email</strong></td><td>${email}</td></tr>
-          <tr><td><strong>Phone</strong></td><td>${phone || '—'}</td></tr>
+          <tr><td><strong>Phone</strong></td><td>${phone || 'Not provided'}</td></tr>
           <tr><td><strong>Type</strong></td><td style="text-transform:capitalize">${user_type}</td></tr>
           <tr><td><strong>Subject</strong></td><td>${subject}</td></tr>
         </table>

@@ -1,42 +1,36 @@
 import type { Metadata } from 'next'
-import { DM_Sans, DM_Mono, Syne, League_Spartan } from 'next/font/google'
+import { Poppins, Hanken_Grotesk } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const dmSans = DM_Sans({ 
+// Poppins is the display / heading face (geometric sans, used at light weights
+// for a calm, editorial feel). Hanken Grotesk carries body copy.
+const poppins = Poppins({
   subsets: ['latin'],
-  display: 'swap',
   weight: ['400', '500', '600', '700'],
-})
-
-const dmMono = DM_Mono({ 
-  subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-dm-mono',
+  variable: '--font-poppins',
   display: 'swap',
 })
 
-const syne = Syne({
+const hanken = Hanken_Grotesk({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
-  variable: '--font-syne',
-  display: 'swap',
-})
-
-const leagueSpartan = League_Spartan({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800', '900'],
-  variable: '--font-league-spartan',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-hanken',
   display: 'swap',
 })
 
 export const metadata: Metadata = {
-  title: 'Bleu | Financial Access for Africa',
-  description: 'Bleu provides loans, financial advice, and access to capital for businesses and individuals across Africa — without the traditional barriers.',
+  title: {
+    default: 'Bleu | Financial Access for Africa',
+    template: '%s | Bleu',
+  },
+  description:
+    'Bleu provides loans, financial advice, and access to capital for businesses and individuals across Africa, without the traditional barriers.',
   keywords: ['fintech', 'Africa', 'loans', 'financial services', 'business loans', 'SME financing'],
   openGraph: {
     title: 'Bleu | Financial Access for Africa',
-    description: 'Bleu provides loans, financial advice, and access to capital for businesses and individuals across Africa.',
+    description:
+      'Bleu provides loans, financial advice, and access to capital for businesses and individuals across Africa.',
     type: 'website',
   },
 }
@@ -51,8 +45,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${dmMono.variable} ${syne.variable} ${leagueSpartan.variable}`}>
-      <body className={`${dmSans.className} antialiased`}>
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${poppins.variable} ${hanken.variable}`}
+    >
+      <body className="bg-canvas font-sans text-ink antialiased">
         {children}
         <Analytics />
       </body>

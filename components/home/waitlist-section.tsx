@@ -1,60 +1,50 @@
+import { Zap, Shield } from 'lucide-react'
+import { Container } from '@/components/site'
 import { WaitlistForm } from '@/components/waitlist-form'
-import { Bell, Zap, Shield } from 'lucide-react'
+
+const BENEFITS = [
+  { Icon: Zap, title: 'Priority access', body: 'Be first in line when we open to individuals.' },
+  { Icon: Shield, title: 'Exclusive benefits', body: 'Special rates and perks for early members.' },
+]
 
 export function WaitlistSection() {
   return (
-    <section id="waitlist" className="gradient-hero py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute inset-0 grid-pattern" />
-      <div className="absolute top-20 left-10 h-72 w-72 rounded-full bg-white/5 blur-3xl" />
-      <div className="absolute bottom-20 right-10 h-96 w-96 rounded-full bg-primary-light/10 blur-3xl" />
-      
-      <div className="relative mx-auto max-w-7xl">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          {/* Content */}
-          <div className="text-center lg:text-left">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm mb-6">
-              <Bell className="h-4 w-4 text-accent" />
-              <span className="text-sm font-medium text-white/90">Limited early access</span>
-            </span>
-            
-            <h2 className="font-display text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-              Get Early Access to Bleu
+    <section id="waitlist" className="pb-20 pt-[52px]">
+      <Container>
+        <div className="grid grid-cols-1 items-center gap-10 rounded-[24px] bg-[linear-gradient(120deg,#143C93,#1A4FBF_55%,#2E63D6)] px-6 py-12 sm:px-12 sm:py-14 lg:grid-cols-[1fr_.9fr]">
+          <div className="text-white">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 font-sans text-[13px] font-semibold leading-none text-white/90">
+              Limited early access
+            </div>
+            <h2 className="m-0 mb-[14px] font-display text-[30px] font-normal leading-[1.08] sm:text-[42px]">
+              Get early access to Bleu.
             </h2>
-            
-            <p className="mt-6 text-lg text-white/80 leading-relaxed max-w-xl mx-auto lg:mx-0">
-              Bleu is currently open to businesses. Individuals can join our waitlist — we&apos;ll notify you when the app is ready for you.
+            <p className="m-0 mb-8 max-w-[440px] font-sans text-[17px] font-medium leading-[1.6] text-white/85">
+              Bleu is open to businesses today. Individuals can join the
+              waitlist, and we&apos;ll let you know the moment the app is ready.
             </p>
-
-            {/* Benefits */}
-            <div className="mt-10 grid gap-4 sm:grid-cols-2">
-              <div className="flex items-start gap-3 text-left">
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-white/10">
-                  <Zap className="h-5 w-5 text-accent" />
+            <div className="grid gap-5 sm:grid-cols-2">
+              {BENEFITS.map(({ Icon, title, body }) => (
+                <div key={title} className="flex items-start gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/12 text-brand-soft">
+                    <Icon size={19} />
+                  </div>
+                  <div>
+                    <p className="m-0 font-sans text-[15px] font-bold leading-tight text-white">
+                      {title}
+                    </p>
+                    <p className="m-0 mt-1 font-sans text-[13px] font-medium leading-snug text-white/75">
+                      {body}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-semibold text-white">Priority Access</p>
-                  <p className="text-sm text-white/70">Be first in line when we launch</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 text-left">
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-white/10">
-                  <Shield className="h-5 w-5 text-accent" />
-                </div>
-                <div>
-                  <p className="font-semibold text-white">Exclusive Benefits</p>
-                  <p className="text-sm text-white/70">Special rates for early members</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
-          {/* Form */}
-          <div>
-            <WaitlistForm variant="hero" />
-          </div>
+          <WaitlistForm />
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

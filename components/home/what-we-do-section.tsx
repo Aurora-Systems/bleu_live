@@ -1,65 +1,99 @@
-import { Building2, LineChart, Users } from 'lucide-react'
+import Link from 'next/link'
+import { Banknote, LineChart, Users, Network } from 'lucide-react'
+import { Container, Eyebrow } from '@/components/site'
 
-const features = [
+const PRODUCTS = [
   {
-    icon: Building2,
+    href: '/business',
+    Icon: Banknote,
     title: 'Business Loans',
-    description: 'Capital for SMEs without the collateral requirement. Fast decisions, transparent terms.',
-    color: 'bg-blue-500/10 text-blue-600',
+    body: 'Working capital and term loans for SMEs, with fast decisions and no collateral on most facilities.',
+    dark: true,
   },
   {
-    icon: LineChart,
+    href: '/business',
+    Icon: LineChart,
     title: 'Financial Advisory',
-    description: 'Expert guidance for startups and growing businesses. Strategic planning that works.',
-    color: 'bg-emerald-500/10 text-emerald-600',
+    body: 'Strategic planning, financial modelling and honest guidance for startups and growing teams.',
   },
   {
-    icon: Users,
+    href: '/individuals',
+    Icon: Users,
     title: 'Individual Loans',
-    description: 'Access to emergency funds when you need them most. Coming soon to individuals.',
-    color: 'bg-amber-500/10 text-amber-600',
+    body: 'Personal and emergency loans built for real life. Coming soon. Join the waitlist.',
+    comingSoon: true,
+  },
+  {
+    href: '/partners',
+    Icon: Network,
+    title: 'Partner Network',
+    body: 'Microfinance institutions and lenders can power more loans on Bleu’s infrastructure.',
   },
 ]
 
 export function WhatWeDoSection() {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="mx-auto max-w-7xl">
-        <div className="text-center max-w-3xl mx-auto">
-          <span className="inline-block mb-4 text-sm font-semibold uppercase tracking-wider text-primary">
-            What We Do
-          </span>
-          <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-            Built for Africa&apos;s financial reality
-          </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            We understand the unique challenges African businesses and individuals face. Our solutions are designed specifically for you.
-          </p>
+    <section className="py-[52px]">
+      <Container>
+        <div className="mb-[34px] flex items-end justify-between gap-6">
+          <div>
+            <Eyebrow className="mb-3">What we do</Eyebrow>
+            <h2 className="m-0 font-display text-[28px] font-normal leading-[1.08] text-ink sm:text-[34px] lg:text-[40px]">
+              How can we help you grow?
+            </h2>
+          </div>
+          <Link
+            href="/business"
+            className="hidden shrink-0 font-sans text-[14px] font-bold leading-none text-brand sm:block"
+          >
+            View all →
+          </Link>
         </div>
 
-        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature) => (
-            <div
-              key={feature.title}
-              className="group glass-card-blue rounded-2xl p-8 transition-all hover-lift"
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {PRODUCTS.map(({ href, Icon, title, body, dark, comingSoon }) => (
+            <Link
+              key={title}
+              href={href}
+              className={`block rounded-2xl border p-6 py-7 transition-colors ${
+                dark
+                  ? 'border-ink bg-ink hover:bg-ink-2'
+                  : 'border-line bg-surface hover:border-brand'
+              }`}
             >
-              <div className={`inline-flex h-14 w-14 items-center justify-center rounded-xl ${feature.color}`}>
-                <feature.icon className="h-7 w-7" />
+              <div className={`mb-4 ${dark ? 'text-brand-soft' : 'text-brand'}`}>
+                <Icon size={28} strokeWidth={1.6} />
               </div>
-              <h3 className="mt-6 font-display text-xl font-bold text-foreground">
-                {feature.title}
-              </h3>
-              <p className="mt-3 text-muted-foreground leading-relaxed">{feature.description}</p>
-              <div className="mt-6 flex items-center text-primary font-medium">
-                <span className="text-sm">Learn more</span>
-                <svg className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+              {comingSoon ? (
+                <span className="mb-2 inline-block rounded-full bg-tint px-2.5 py-1 font-sans text-[11px] font-bold uppercase leading-none tracking-[0.06em] text-brand">
+                  Coming soon
+                </span>
+              ) : null}
+              <div
+                className={`mb-2 font-display text-[22px] font-normal leading-[1.12] ${
+                  dark ? 'text-white' : 'text-ink'
+                }`}
+              >
+                {title}
               </div>
-            </div>
+              <p
+                className={`m-0 mb-4 font-sans text-[14px] font-medium leading-[1.55] ${
+                  dark ? 'text-cloud' : 'text-body-2'
+                }`}
+              >
+                {body}
+              </p>
+              <span
+                className={`font-sans text-[13px] font-bold leading-none ${
+                  dark ? 'text-brand-soft' : 'text-brand'
+                }`}
+              >
+                Learn more →
+              </span>
+            </Link>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

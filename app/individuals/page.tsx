@@ -1,172 +1,117 @@
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
-import { WaitlistForm } from '@/components/waitlist-form'
-import Image from 'next/image'
-import { AlertCircle, Shield, Zap, Download, UserCheck, FileText, Banknote } from 'lucide-react'
+import { Container, PageHero, SectionHeading, ImageSlot } from '@/components/site'
+import { mockups } from '@/lib/images'
+import { WaitlistSection } from '@/components/home/waitlist-section'
+import { AlertCircle, Shield, Zap } from 'lucide-react'
 
-const features = [
+const FEATURES = [
   {
-    icon: AlertCircle,
+    Icon: AlertCircle,
     title: 'Emergency Loans',
-    description: 'Access funds for unexpected expenses — medical bills, school fees, urgent repairs',
+    body: 'Access funds for the unexpected: medical bills, school fees, urgent repairs.',
   },
   {
-    icon: Shield,
+    Icon: Shield,
     title: 'No Collateral',
-    description: 'We assess your ability to repay, not what you own',
+    body: 'We assess your ability to repay, not what you own.',
   },
   {
-    icon: Zap,
+    Icon: Zap,
     title: 'Fast Disbursement',
-    description: 'From application to funds in your account — quickly and transparently',
+    body: 'From application to funds in your account, quickly and transparently.',
   },
 ]
 
-const steps = [
-  { icon: Download, number: '01', title: 'Download the Bleu app' },
-  { icon: UserCheck, number: '02', title: 'Complete your profile' },
-  { icon: FileText, number: '03', title: 'Apply for a loan' },
-  { icon: Banknote, number: '04', title: 'Receive funds' },
+const STEPS = [
+  { n: '01', title: 'Download the Bleu app' },
+  { n: '02', title: 'Complete your profile' },
+  { n: '03', title: 'Apply for a loan' },
+  { n: '04', title: 'Receive funds' },
 ]
 
 export default function IndividualsPage() {
   return (
-    <main>
+    <>
       <Navbar />
-      
-      {/* Hero */}
-      <section className="relative gradient-section pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary mb-6">
-              Coming soon for individuals — join the waitlist
+      <main>
+        <PageHero
+          pill="Coming soon for individuals"
+          title="A financial safety net, for when you need it"
+          subtitle="Bleu is building personal loan access for individuals across Africa. No unnecessary hoops, no hidden fees, just help when it matters."
+        />
+
+        {/* What's coming */}
+        <section className="py-[52px]">
+          <Container>
+            <SectionHeading center title="What’s coming" />
+            <div className="mt-[34px] grid grid-cols-1 gap-[22px] md:grid-cols-3">
+              {FEATURES.map(({ Icon, title, body }) => (
+                <div key={title} className="rounded-2xl border border-line bg-surface px-8 py-9">
+                  <div className="mb-[18px] flex h-12 w-12 items-center justify-center rounded-[12px] bg-tint text-brand">
+                    <Icon size={24} strokeWidth={1.7} />
+                  </div>
+                  <h3 className="m-0 mb-2.5 font-display text-[21px] font-normal leading-[1.12] text-ink">
+                    {title}
+                  </h3>
+                  <p className="m-0 font-sans text-[15px] font-medium leading-[1.6] text-body-2">
+                    {body}
+                  </p>
+                </div>
+              ))}
             </div>
-            <h1 className="font-display text-4xl font-bold text-foreground sm:text-5xl lg:text-6xl text-balance">
-              A Financial Safety Net — When You Need It
-            </h1>
-            <p className="mt-6 text-lg text-muted-foreground sm:text-xl text-pretty">
-              Bleu is building personal loan access for individuals across Africa. No unnecessary hoops. No hidden fees.
+          </Container>
+        </section>
+
+        {/* App preview placeholders */}
+        <section className="py-[52px]">
+          <Container>
+            <SectionHeading center title="The Bleu app" />
+            <p className="mx-auto mt-3 max-w-[520px] text-center font-sans text-[16px] font-medium leading-[1.6] text-body-2">
+              Currently in select access.
             </p>
-          </div>
-        </div>
-      </section>
+            <div className="mt-[34px] grid grid-cols-1 gap-5 sm:grid-cols-3">
+              {[
+                { src: mockups.splash, alt: 'Bleu app splash screen' },
+                { src: mockups.borders, alt: 'Bleu app splash: Banking Without Borders' },
+                { src: mockups.home, alt: 'Bleu app home dashboard with virtual card and payment history' },
+              ].map((s) => (
+                <ImageSlot
+                  key={s.src}
+                  src={s.src}
+                  alt={s.alt}
+                  fit="contain"
+                  className="aspect-[9/16] rounded-[20px] border border-line bg-tint p-3"
+                />
+              ))}
+            </div>
+          </Container>
+        </section>
 
-      {/* What's Coming */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl text-center text-balance">
-            What&apos;s Coming
-          </h2>
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature) => (
-              <div key={feature.title} className="glass-card-blue rounded-2xl p-8">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-                  <feature.icon className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="mt-6 font-display text-xl font-bold text-foreground">
-                  {feature.title}
-                </h3>
-                <p className="mt-3 text-muted-foreground">{feature.description}</p>
+        {/* How it will work */}
+        <section className="py-[52px]">
+          <Container>
+            <div className="rounded-[20px] border border-line bg-surface px-6 py-12 sm:px-11">
+              <SectionHeading center title="How it will work" />
+              <div className="mt-9 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                {STEPS.map((s) => (
+                  <div key={s.n} className="text-center">
+                    <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-tint font-display text-[18px] font-normal text-brand">
+                      {s.n}
+                    </div>
+                    <h3 className="m-0 font-sans text-[15px] font-bold leading-[1.3] text-ink">
+                      {s.title}
+                    </h3>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
+          </Container>
+        </section>
 
-      {/* App Mockups Section */}
-      <section className="gradient-section py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="mx-auto max-w-7xl">
-          <div className="text-center mb-12">
-            <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl text-balance">
-              The Bleu App
-            </h2>
-            <p className="mt-4 text-muted-foreground">Currently in select access</p>
-          </div>
-          
-          <div className="relative flex justify-center items-center min-h-[500px]">
-            {/* Left mockup */}
-            <div className="absolute left-1/2 -translate-x-[120%] opacity-60 hidden md:block">
-              <Image
-                src="https://bleubank.sirv.com/splash-and-theme-view.png"
-                alt="Bleu App splash screen"
-                width={280}
-                height={400}
-                className="phone-glow -rotate-12"
-                style={{ width: 'auto', height: 'auto' }}
-                loading="lazy"
-              />
-            </div>
-            
-            {/* Center mockup */}
-            <div className="relative z-10">
-              <Image
-                src="https://bleubank.sirv.com/home-and-loan-view.png"
-                alt="Bleu App home and loan views"
-                width={350}
-                height={500}
-                className="phone-glow"
-                style={{ width: 'auto', height: 'auto' }}
-                loading="lazy"
-              />
-            </div>
-            
-            {/* Right mockup */}
-            <div className="absolute left-1/2 translate-x-[20%] opacity-60 hidden md:block">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/app%20bleu-fXCA2321GTczhLXQP7knvWpglTm7S2.png"
-                alt="Bleu App features"
-                width={280}
-                height={400}
-                className="phone-glow rotate-12"
-                style={{ width: 'auto', height: 'auto' }}
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How It Will Work */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl text-center text-balance">
-            How It Will Work
-          </h2>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map((step) => (
-              <div key={step.number} className="text-center">
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary text-xl font-bold text-white">
-                  {step.number}
-                </div>
-                <h3 className="mt-4 font-display font-semibold text-foreground">
-                  {step.title}
-                </h3>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Waitlist CTA */}
-      <section className="gradient-hero py-24 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <div className="text-center lg:text-left">
-              <h2 className="font-display text-3xl font-bold text-white sm:text-4xl text-balance">
-                Be among the first to access Bleu
-              </h2>
-              <p className="mt-4 text-lg text-white/80 text-pretty">
-                We are currently selecting from our waitlist. Sign up now to secure your place.
-              </p>
-            </div>
-            <div>
-              <WaitlistForm variant="hero" />
-            </div>
-          </div>
-        </div>
-      </section>
-
+        <WaitlistSection />
+      </main>
       <Footer />
-    </main>
+    </>
   )
 }

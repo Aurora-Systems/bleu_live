@@ -3,26 +3,16 @@
 import { useState } from 'react'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
-import { Mail, Globe, Linkedin, Twitter } from 'lucide-react'
+import { Container, PageHero } from '@/components/site'
+import { Mail, Globe, Instagram, Check } from 'lucide-react'
 
-const contactInfo = [
-  {
-    icon: Mail,
-    label: 'Email',
-    value: 'hello@bleubank.xyz',
-    href: 'mailto:hello@bleubank.xyz',
-  },
-  {
-    icon: Globe,
-    label: 'Website',
-    value: 'bleubank.xyz',
-    href: 'https://bleubank.xyz',
-  },
+const CONTACT_INFO = [
+  { Icon: Mail, label: 'Email', value: 'hello@bleubank.xyz', href: 'mailto:hello@bleubank.xyz' },
+  { Icon: Globe, label: 'Website', value: 'bleubank.xyz', href: 'https://bleubank.xyz' },
 ]
 
-const socialLinks = [
-  { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com' },
-  { icon: Twitter, label: 'Twitter', href: 'https://twitter.com' },
+const SOCIALS = [
+  { Icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/bleu.access/' },
 ]
 
 export default function ContactPage() {
@@ -56,14 +46,7 @@ export default function ContactPage() {
       }
 
       setIsSuccess(true)
-      setFormData({
-        full_name: '',
-        email: '',
-        phone: '',
-        user_type: 'business',
-        subject: '',
-        message: '',
-      })
+      setFormData({ full_name: '', email: '', phone: '', user_type: 'business', subject: '', message: '' })
     } catch (err) {
       console.error('Contact form error:', err)
       setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
@@ -72,199 +55,190 @@ export default function ContactPage() {
     }
   }
 
-  return (
-    <main>
-      <Navbar />
-      
-      {/* Hero */}
-      <section className="gradient-section pt-32 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <h1 className="font-display text-4xl font-bold text-foreground sm:text-5xl text-balance">
-            Let&apos;s Talk
-          </h1>
-          <p className="mt-4 text-lg text-muted-foreground text-pretty">
-            Whether you&apos;re a business, individual, or potential partner — we&apos;re here.
-          </p>
-        </div>
-      </section>
+  const inputClass =
+    'mt-2 block w-full rounded-xl border border-line-2 bg-surface px-4 py-3.5 font-sans text-[15px] text-ink placeholder:text-caption transition-colors focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/15'
 
-      {/* Contact Form and Info */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="mx-auto max-w-5xl">
-          <div className="grid gap-12 lg:grid-cols-3">
-            {/* Contact Information */}
-            <div className="lg:col-span-1">
-              <div className="space-y-6">
-                {contactInfo.map((info) => (
+  return (
+    <>
+      <Navbar />
+      <main>
+        <PageHero
+          eyebrow="Contact"
+          title="Let’s talk"
+          subtitle="Whether you’re a business, an individual, or a potential partner, we’re here to help."
+        />
+
+        <section className="pb-20 pt-[34px]">
+          <Container className="max-w-[980px]">
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-[.8fr_1.2fr]">
+              {/* Contact info */}
+              <div className="flex flex-col gap-6">
+                {CONTACT_INFO.map(({ Icon, label, value, href }) => (
                   <a
-                    key={info.label}
-                    href={info.href}
-                    className="flex items-center gap-4 text-muted-foreground transition-colors hover:text-primary"
+                    key={label}
+                    href={href}
+                    className="flex items-center gap-4 text-body transition-colors hover:text-brand"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                      <info.icon className="h-5 w-5 text-primary" />
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-tint text-brand">
+                      <Icon size={19} />
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">{info.label}</p>
-                      <p className="font-medium text-foreground">{info.value}</p>
+                      <p className="m-0 font-sans text-[13px] font-medium text-caption">{label}</p>
+                      <p className="m-0 font-sans text-[15px] font-semibold text-ink">{value}</p>
                     </div>
                   </a>
                 ))}
 
-                <div className="pt-4">
-                  <p className="text-sm text-muted-foreground mb-3">Follow us</p>
+                <div>
+                  <p className="m-0 mb-3 font-sans text-[13px] font-medium text-caption">Follow us</p>
                   <div className="flex gap-3">
-                    {socialLinks.map((social) => (
+                    {SOCIALS.map(({ Icon, label, href }) => (
                       <a
-                        key={social.label}
-                        href={social.href}
+                        key={label}
+                        href={href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors hover:bg-primary hover:text-white"
-                        aria-label={social.label}
+                        aria-label={label}
+                        className="flex h-11 w-11 items-center justify-center rounded-xl bg-tint text-brand transition-colors hover:bg-brand hover:text-white"
                       >
-                        <social.icon className="h-5 w-5" />
+                        <Icon size={19} />
                       </a>
                     ))}
                   </div>
                 </div>
 
-                <p className="text-sm text-muted-foreground pt-4">
-                  We typically respond within 1-2 business days.
+                <p className="m-0 font-sans text-[14px] font-medium leading-[1.6] text-body-2">
+                  We typically respond within 1–2 business days.
                 </p>
               </div>
-            </div>
 
-            {/* Contact Form */}
-            <div className="lg:col-span-2">
-              {isSuccess ? (
-                <div className="glass-card-blue rounded-2xl p-8 text-center">
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-                    <svg className="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
+              {/* Contact form */}
+              <div>
+                {isSuccess ? (
+                  <div className="rounded-2xl border border-line bg-surface p-8 text-center">
+                    <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-tint text-brand">
+                      <Check size={28} />
+                    </div>
+                    <h3 className="m-0 font-display text-[20px] font-normal text-ink">Message sent</h3>
+                    <p className="m-0 mt-2 font-sans text-[15px] font-medium text-body-2">
+                      We&apos;ll get back to you as soon as possible.
+                    </p>
                   </div>
-                  <h3 className="font-display text-xl font-bold text-foreground">Message sent</h3>
-                  <p className="mt-2 text-muted-foreground">
-                    We&apos;ll get back to you as soon as possible.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="glass-card-blue rounded-2xl p-6 md:p-8 space-y-4">
-                  <div className="grid gap-4 sm:grid-cols-2">
+                ) : (
+                  <form
+                    onSubmit={handleSubmit}
+                    className="space-y-4 rounded-2xl border border-line bg-surface p-6 md:p-8"
+                  >
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      <div>
+                        <label htmlFor="full_name" className="block font-sans text-[14px] font-semibold text-ink">
+                          Full name
+                        </label>
+                        <input
+                          type="text"
+                          id="full_name"
+                          required
+                          value={formData.full_name}
+                          onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
+                          className={inputClass}
+                          placeholder="Your name"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="contact_email" className="block font-sans text-[14px] font-semibold text-ink">
+                          Email address
+                        </label>
+                        <input
+                          type="email"
+                          id="contact_email"
+                          required
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          className={inputClass}
+                          placeholder="you@example.com"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      <div>
+                        <label htmlFor="contact_phone" className="block font-sans text-[14px] font-semibold text-ink">
+                          Phone number <span className="font-medium text-caption">(optional)</span>
+                        </label>
+                        <input
+                          type="tel"
+                          id="contact_phone"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          className={inputClass}
+                          placeholder="+263 000 000 000"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="user_type" className="block font-sans text-[14px] font-semibold text-ink">
+                          I am a
+                        </label>
+                        <select
+                          id="user_type"
+                          value={formData.user_type}
+                          onChange={(e) => setFormData({ ...formData, user_type: e.target.value })}
+                          className={`${inputClass} appearance-none`}
+                        >
+                          <option value="business">Business</option>
+                          <option value="individual">Individual</option>
+                          <option value="partner">Partner</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
+                    </div>
+
                     <div>
-                      <label htmlFor="full_name" className="block text-sm font-medium text-foreground">
-                        Full Name
+                      <label htmlFor="subject" className="block font-sans text-[14px] font-semibold text-ink">
+                        Subject
                       </label>
                       <input
                         type="text"
-                        id="full_name"
+                        id="subject"
                         required
-                        value={formData.full_name}
-                        onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
-                        className="mt-1 block w-full rounded-lg border border-primary/10 bg-white px-4 py-3 text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-                        placeholder="Your name"
+                        value={formData.subject}
+                        onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                        className={inputClass}
+                        placeholder="How can we help?"
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="contact_email" className="block text-sm font-medium text-foreground">
-                        Email Address
+                      <label htmlFor="message" className="block font-sans text-[14px] font-semibold text-ink">
+                        Message
                       </label>
-                      <input
-                        type="email"
-                        id="contact_email"
+                      <textarea
+                        id="message"
+                        rows={5}
                         required
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="mt-1 block w-full rounded-lg border border-primary/10 bg-white px-4 py-3 text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-                        placeholder="you@example.com"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <div>
-                      <label htmlFor="contact_phone" className="block text-sm font-medium text-foreground">
-                        Phone Number (optional)
-                      </label>
-                      <input
-                        type="tel"
-                        id="contact_phone"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="mt-1 block w-full rounded-lg border border-primary/10 bg-white px-4 py-3 text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-                        placeholder="+234 800 000 0000"
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        className={`${inputClass} resize-none`}
+                        placeholder="Your message…"
                       />
                     </div>
 
-                    <div>
-                      <label htmlFor="user_type" className="block text-sm font-medium text-foreground">
-                        I am a
-                      </label>
-                      <select
-                        id="user_type"
-                        value={formData.user_type}
-                        onChange={(e) => setFormData({ ...formData, user_type: e.target.value })}
-                        className="mt-1 block w-full rounded-lg border border-primary/10 bg-white px-4 py-3 text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-                      >
-                        <option value="business">Business</option>
-                        <option value="individual">Individual</option>
-                        <option value="partner">Partner</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </div>
-                  </div>
+                    {error && <p className="m-0 font-sans text-[14px] text-destructive">{error}</p>}
 
-                  <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-foreground">
-                      Subject
-                    </label>
-                    <input
-                      type="text"
-                      id="subject"
-                      required
-                      value={formData.subject}
-                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      className="mt-1 block w-full rounded-lg border border-primary/10 bg-white px-4 py-3 text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-                      placeholder="How can we help?"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-foreground">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      rows={5}
-                      required
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="mt-1 block w-full rounded-lg border border-primary/10 bg-white px-4 py-3 text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary resize-none"
-                      placeholder="Your message..."
-                    />
-                  </div>
-
-                  {error && (
-                    <p className="text-sm text-red-500">{error}</p>
-                  )}
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full rounded-lg bg-primary px-6 py-3 font-semibold text-white shadow-lg transition-all hover:bg-primary/90 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-50"
-                  >
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
-                  </button>
-                </form>
-              )}
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full rounded-xl bg-brand px-6 py-4 font-sans text-[15px] font-bold text-white transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      {isSubmitting ? 'Sending…' : 'Send message'}
+                    </button>
+                  </form>
+                )}
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
-
+          </Container>
+        </section>
+      </main>
       <Footer />
-    </main>
+    </>
   )
 }

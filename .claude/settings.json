@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(echo \"=== Current dir \\(bleu_live\\) ===\" && ls -la /Users/macbook/work/aurora/bleu_live && echo \"\" && echo \"=== Parent dir \\(aurora\\) ===\" && ls -la /Users/macbook/work/aurora)",
+      "Read(//Users/macbook/work/aurora/**)",
+      "Read(//Users/macbook/work/aurora/qube-finance/app/**)",
+      "Read(//Users/macbook/work/aurora/qube-finance/**)",
+      "Read(//Users/macbook/work/aurora/qube-finance/components/**)",
+      "Bash(echo \"=== postcss ===\" && cat /Users/macbook/work/aurora/bleu_live/postcss.config.mjs && echo \"\" && echo \"=== tailwind config exists? ===\" && ls /Users/macbook/work/aurora/bleu_live/tailwind.config.* 2>/dev/null || echo \"no tailwind.config \\(v4\\)\" && echo \"\" && echo \"=== styles dir ===\" && ls -la /Users/macbook/work/aurora/bleu_live/styles && echo \"\" && echo \"=== tsconfig paths ===\" && cat /Users/macbook/work/aurora/bleu_live/tsconfig.json && echo \"\" && echo \"=== lib/utils ===\" && cat /Users/macbook/work/aurora/bleu_live/lib/utils.ts && echo \"\" && echo \"=== qube lib/site ===\" && cat /Users/macbook/work/aurora/qube-finance/lib/site.ts 2>/dev/null)",
+      "Read(//Users/macbook/work/aurora/qube-finance/lib/**)",
+      "Bash(timeout 300 pnpm build)",
+      "Bash(break)",
+      "Bash(node -e ' *)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(pkill -f \"next-server\")",
+      "Bash(ls -la *.jpg *.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight sirv_logo.png)",
+      "Bash(sips -s format png -z 180 180 --padColor FFFFFF sirv_logo.png --out /Users/macbook/work/aurora/bleu_live/app/apple-icon.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight /Users/macbook/work/aurora/bleu_live/app/icon.png)"
+    ]
+  }
+}
