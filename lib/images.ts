@@ -1,5 +1,5 @@
 // Web assets served from the Bleu CDN (Cloudflare R2).
-const CDN = 'https://cdn.bleubank.xyz/web_assets'
+const CDN = 'https://bleu.clipond.com/web_assets'
 
 /** Photography — African business / SME scenes, used full-bleed (object-cover). */
 export const photos = {
