@@ -20,7 +20,7 @@ export async function POST(request: Request) {
 
     const { error: emailError } = await resend.emails.send({
       from: 'Bleu <noreply@updates.bleu.co.zw>',
-      to: 'inquiries@bleubank.xyz',
+      to: 'hello@bleu.co.zw',
       subject: `New Waitlist Sign-up: ${full_name}`,
       html: `
         <h2>New Waitlist Submission</h2>

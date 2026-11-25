@@ -20,7 +20,7 @@ export async function POST(request: Request) {
 
     const { error: emailError } = await resend.emails.send({
       from: 'Bleu <noreply@updates.bleu.co.zw>',
-      to: 'inquiries@bleubank.xyz',
+      to: 'hello@bleu.co.zw',
       replyTo: email,
       subject: `Contact Form: ${subject}`,
       html: `
