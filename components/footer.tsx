@@ -96,12 +96,12 @@ export function Footer() {
                 hello@bleubank.xyz
               </a>
               <a
-                href="https://bleubank.xyz"
+                href="https://bleu.co.zw"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-cloud transition-colors hover:text-white"
               >
-                bleubank.xyz
+                bleu.co.zw
               </a>
               <a
                 href={APP_URL}

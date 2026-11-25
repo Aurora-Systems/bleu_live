@@ -8,7 +8,7 @@ import { Mail, Globe, Instagram, Check } from 'lucide-react'
 
 const CONTACT_INFO = [
   { Icon: Mail, label: 'Email', value: 'hello@bleubank.xyz', href: 'mailto:hello@bleubank.xyz' },
-  { Icon: Globe, label: 'Website', value: 'bleubank.xyz', href: 'https://bleubank.xyz' },
+  { Icon: Globe, label: 'Website', value: 'bleu.co.zw', href: 'https://bleu.co.zw' },
 ]
 
 const SOCIALS = [
