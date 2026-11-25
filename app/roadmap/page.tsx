@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { Container, PageHero } from '@/components/site'
-import { APP_URL } from '@/lib/site'
+import { APP_URL, PAYMENTS_CTA_HREF } from '@/lib/site'
 import { Check, Lock } from 'lucide-react'
 
 const PHASES = [
@@ -11,36 +11,40 @@ const PHASES = [
     title: 'Lending & Advisory',
     status: 'Live',
     isActive: true,
-    body: 'We are actively disbursing business and personal loans and providing financial advisory services to SMEs, startups and individuals across Africa.',
+    body: 'Bleu lends directly to businesses and individuals 18 or older, and provides financial advisory to SMEs and startups.',
     features: [
       { text: 'Business loan disbursement', done: true },
       { text: 'Personal loans for individuals', done: true },
+      { text: 'ID and KYC verification with Didit', done: true },
       { text: 'Financial advisory for startups', done: true },
       { text: 'Collateral-free lending', done: true },
     ],
   },
   {
     phase: 'Phase 2',
-    title: 'Bleu Wallet',
+    title: 'Bleu Payments',
     status: 'Coming soon',
     isActive: false,
-    body: 'A digital wallet for individuals and businesses. Store, send and receive money across Africa.',
+    body: 'One checkout for every mobile money wallet, ZimSwitch, Visa and Mastercard, so Zimbabwean businesses can get paid online, in store and on their websites.',
     features: [
-      { text: 'Mobile wallet for individuals', done: false },
-      { text: 'Business accounts', done: false },
-      { text: 'Cross-border transfers', done: false },
+      { text: 'Unified online checkout', done: false },
+      { text: 'Mobile money, ZimSwitch, Visa and Mastercard acceptance', done: false },
+      { text: 'POS payments', done: false },
+      { text: 'E-commerce integration', done: false },
+      { text: 'Merchant platform and mobile app', done: false },
+      { text: 'Loans based on your Bleu transaction history', done: false },
     ],
   },
   {
     phase: 'Phase 3',
-    title: 'Peer-to-Peer Lending & Investing',
+    title: 'Bleu Wallet',
     status: 'On the horizon',
     isActive: false,
-    body: 'Open up the Bleu network so individuals and institutions can lend to and invest in each other directly.',
+    body: 'A digital wallet for individuals and businesses. Store, send and receive money.',
     features: [
-      { text: 'P2P lending marketplace', done: false },
-      { text: 'Micro-investment tools', done: false },
-      { text: 'Community lending pools', done: false },
+      { text: 'Mobile wallet for individuals', done: false },
+      { text: 'Business accounts', done: false },
+      { text: 'Send and receive money across Zimbabwe', done: false },
     ],
   },
 ]
@@ -53,7 +57,7 @@ export default function RoadmapPage() {
         <PageHero
           eyebrow="Roadmap"
           title="Where we’re going"
-          subtitle="Bleu is building the financial layer for Africa, one stage at a time."
+          subtitle="Bleu is building the payments and finance layer for Zimbabwean business, one stage at a time."
         />
 
         {/* Timeline */}
@@ -121,20 +125,20 @@ export default function RoadmapPage() {
                 Want to be part of this journey?
               </h2>
               <div className="flex flex-col justify-center gap-4 sm:flex-row">
+                <Link
+                  href={PAYMENTS_CTA_HREF}
+                  className="rounded-lg bg-white px-[30px] py-4 font-sans text-[15px] font-bold leading-none text-brand transition-colors hover:bg-brand-soft"
+                >
+                  Get early access
+                </Link>
                 <a
                   href={APP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-lg bg-white px-[30px] py-4 font-sans text-[15px] font-bold leading-none text-brand transition-colors hover:bg-brand-soft"
-                >
-                  Apply on the app
-                </a>
-                <Link
-                  href="/partners"
                   className="rounded-lg border-[1.5px] border-white/50 px-[28px] py-4 font-sans text-[15px] font-bold leading-none text-white transition-colors hover:border-white"
                 >
-                  Partner with us
-                </Link>
+                  Apply for a loan
+                </a>
               </div>
             </div>
           </Container>

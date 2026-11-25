@@ -5,13 +5,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
-import { APP_URL } from '@/lib/site'
+import { PAYMENTS_CTA_HREF } from '@/lib/site'
 
 const NAV = [
   { href: '/', label: 'Home', match: (p: string) => p === '/' },
   { href: '/business', label: 'Business', match: (p: string) => p.startsWith('/business') },
   { href: '/individuals', label: 'Individuals', match: (p: string) => p.startsWith('/individuals') },
-  { href: '/partners', label: 'Partners', match: (p: string) => p.startsWith('/partners') },
   { href: '/roadmap', label: 'Roadmap', match: (p: string) => p.startsWith('/roadmap') },
   { href: '/contact', label: 'Contact', match: (p: string) => p.startsWith('/contact') },
 ]
@@ -53,14 +52,12 @@ export function Navbar() {
         </nav>
 
         {/* Desktop CTA */}
-        <a
-          href={APP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          href={PAYMENTS_CTA_HREF}
           className="hidden rounded-lg bg-brand px-[22px] py-3 font-sans text-[14px] font-bold leading-none text-white transition-colors hover:bg-brand-dark lg:inline-block"
         >
-          Apply now
-        </a>
+          Get early access
+        </Link>
 
         {/* Mobile toggle */}
         <button
@@ -93,15 +90,13 @@ export function Navbar() {
                 </Link>
               )
             })}
-            <a
-              href={APP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={PAYMENTS_CTA_HREF}
               onClick={() => setOpen(false)}
               className="mt-2 rounded-lg bg-brand px-[22px] py-3 text-center font-sans text-[14px] font-bold leading-none text-white transition-colors hover:bg-brand-dark"
             >
-              Apply now
-            </a>
+              Get early access
+            </Link>
           </div>
         </nav>
       ) : null}

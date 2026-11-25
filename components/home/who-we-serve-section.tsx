@@ -4,15 +4,15 @@ import { Container, Eyebrow } from '@/components/site'
 import { APP_URL } from '@/lib/site'
 
 const BUSINESS_POINTS = [
-  'Working capital loans',
-  'Financial advisory services',
-  'Access to an investor network',
+  'One checkout for mobile money and cards',
+  'POS and e-commerce payments',
+  'Loans based on your Bleu payment history',
 ]
 
 const INDIVIDUAL_POINTS = [
   'Emergency and personal loans',
-  'No collateral required',
-  'Fast, transparent disbursement',
+  'Open to anyone 18 or older',
+  'Quick ID verification with Didit',
 ]
 
 export function WhoWeServeSection() {
@@ -33,11 +33,11 @@ export function WhoWeServeSection() {
               <Building2 size={26} strokeWidth={1.6} />
             </div>
             <h3 className="m-0 mb-3 font-display text-[26px] font-normal leading-[1.1] text-white">
-              Businesses &amp; startups
+              Businesses &amp; merchants
             </h3>
             <p className="m-0 mb-6 max-w-[420px] font-sans text-[15px] font-medium leading-[1.6] text-cloud">
-              Access capital and financial advisory designed for African
-              businesses, with no traditional collateral required on most loans.
+              Accept every way your customers pay, online, in store and on your
+              website, and build a payment history that unlocks loans from Bleu.
             </p>
             <ul className="m-0 mb-8 flex flex-col gap-3 p-0">
               {BUSINESS_POINTS.map((p) => (
@@ -69,8 +69,9 @@ export function WhoWeServeSection() {
               </span>
             </div>
             <p className="m-0 mb-6 max-w-[420px] font-sans text-[15px] font-medium leading-[1.6] text-body-2">
-              Personal loan access for emergencies, education and more, now
-              live. Apply in minutes on the Bleu app.
+              Personal loans from Bleu for emergencies, education and more,
+              whether or not you use Bleu Payments. Apply in minutes on the Bleu
+              app.
             </p>
             <ul className="m-0 mb-8 flex flex-col gap-3 p-0">
               {INDIVIDUAL_POINTS.map((p) => (

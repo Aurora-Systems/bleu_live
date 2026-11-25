@@ -4,7 +4,7 @@ import { Container, PageHero, SectionHeading, ImageSlot } from '@/components/sit
 import { mockups } from '@/lib/images'
 import { AppCtaSection } from '@/components/home/app-cta-section'
 import { APP_URL } from '@/lib/site'
-import { AlertCircle, Shield, Zap } from 'lucide-react'
+import { AlertCircle, UserCheck, TrendingUp } from 'lucide-react'
 
 const FEATURES = [
   {
@@ -13,20 +13,20 @@ const FEATURES = [
     body: 'Access funds for the unexpected: medical bills, school fees, urgent repairs.',
   },
   {
-    Icon: Shield,
-    title: 'No Collateral',
-    body: 'We assess your ability to repay, not what you own.',
+    Icon: UserCheck,
+    title: 'Open to Everyone',
+    body: 'Anyone 18 or older can apply. Verify your ID online in minutes with Didit.',
   },
   {
-    Icon: Zap,
-    title: 'Fast Disbursement',
-    body: 'From application to funds in your account, quickly and transparently.',
+    Icon: TrendingUp,
+    title: 'Credit That Grows',
+    body: 'Move money through Bleu and that history can unlock bigger loans over time.',
   },
 ]
 
 const STEPS = [
-  { n: '01', title: 'Download the Bleu app' },
-  { n: '02', title: 'Complete your profile' },
+  { n: '01', title: 'Sign up on the Bleu app' },
+  { n: '02', title: 'Verify your ID with Didit' },
   { n: '03', title: 'Apply for a loan' },
   { n: '04', title: 'Receive funds' },
 ]
@@ -39,7 +39,7 @@ export default function IndividualsPage() {
         <PageHero
           pill="Personal loans, now live"
           title="A financial safety net, for when you need it"
-          subtitle="Bleu now offers personal loan access for individuals across Africa. No unnecessary hoops, no hidden fees, just help when it matters."
+          subtitle="Bleu lends directly to anyone 18 or older, whether or not you use Bleu Payments. No collateral, no unnecessary hoops, no hidden fees. Just help when it matters."
         />
 
         <section className="pb-4 pt-2">
@@ -87,7 +87,7 @@ export default function IndividualsPage() {
             <div className="mt-[34px] grid grid-cols-1 gap-5 sm:grid-cols-3">
               {[
                 { src: mockups.splash, alt: 'Bleu app splash screen' },
-                { src: mockups.borders, alt: 'Bleu app splash: Banking Without Borders' },
+                { src: mockups.loan, alt: 'Bleu app loan screen showing the amount slider, repayment terms and disbursement options' },
                 { src: mockups.home, alt: 'Bleu app home dashboard with virtual card and payment history' },
               ].map((s) => (
                 <ImageSlot
@@ -123,7 +123,7 @@ export default function IndividualsPage() {
           </Container>
         </section>
 
-        <AppCtaSection />
+        <AppCtaSection focus="loans" />
       </main>
       <Footer />
     </>

@@ -21,16 +21,29 @@ const hanken = Hanken_Grotesk({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Bleu | Financial Access for Africa',
+    default: 'Bleu | Payments and Business Finance for Zimbabwe',
     template: '%s | Bleu',
   },
   description:
-    'Bleu provides loans, financial advice, and access to capital for businesses and individuals across Africa, without the traditional barriers.',
-  keywords: ['fintech', 'Africa', 'loans', 'financial services', 'business loans', 'SME financing'],
+    'Bleu is a payments provider and lender for Zimbabwe. Accept every mobile money wallet, ZimSwitch, Visa and Mastercard through one checkout, online, in store and on your e-commerce site, and get loans from Bleu based on how money moves through your account.',
+  keywords: [
+    'payments',
+    'payment gateway',
+    'Zimbabwe',
+    'mobile money',
+    'ZimSwitch',
+    'Visa',
+    'Mastercard',
+    'online checkout',
+    'POS payments',
+    'e-commerce payments',
+    'business loans',
+    'microfinance',
+  ],
   openGraph: {
-    title: 'Bleu | Financial Access for Africa',
+    title: 'Bleu | Payments and Business Finance for Zimbabwe',
     description:
-      'Bleu provides loans, financial advice, and access to capital for businesses and individuals across Africa.',
+      'One checkout for every mobile money wallet, ZimSwitch, Visa and Mastercard. Take payments online, in store and on your website, and let your payment history unlock loans from Bleu.',
     type: 'website',
   },
 }

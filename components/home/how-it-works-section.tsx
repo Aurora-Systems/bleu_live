@@ -3,10 +3,10 @@ import { Container, ImageSlot } from '@/components/site'
 import { mockups } from '@/lib/images'
 
 const STEPS = [
-  { n: '01', title: 'Apply online', body: 'A short application you can finish in minutes, with no paperwork pile.' },
-  { n: '02', title: 'Share your details', body: 'Tell us about your business so we can understand the full picture.' },
-  { n: '03', title: 'Get a decision', body: 'A fast, transparent answer from our team, usually within a day.' },
-  { n: '04', title: 'Receive funds', body: 'Once approved, money lands in your account so you can move.' },
+  { n: '01', title: 'Tell us about your business', body: 'Get early access and share a few details about how you sell today.' },
+  { n: '02', title: 'Get verified', body: 'Verify your ID and business documents online in minutes, securely through Didit.' },
+  { n: '03', title: 'Connect your channels', body: 'Add the Bleu checkout to your website or set up POS payments in store.' },
+  { n: '04', title: 'Start getting paid', body: 'Customers pay with mobile money or card, and every payment builds the history that unlocks Bleu loans.' },
 ]
 
 export function HowItWorksSection() {
@@ -17,7 +17,7 @@ export function HowItWorksSection() {
           <div className="rounded-[20px] border border-line bg-surface px-6 py-12 sm:px-11">
             <div className="mb-8 flex items-end justify-between gap-6">
               <h2 className="m-0 font-display text-[26px] font-normal leading-[1.1] text-ink sm:text-[34px]">
-                Approved in four simple steps
+                Start accepting payments in four steps
               </h2>
               <Link
                 href="/contact"
@@ -44,8 +44,8 @@ export function HowItWorksSection() {
           </div>
 
           <ImageSlot
-            src={mockups.loan}
-            alt="Bleu app loan screen showing the amount slider, repayment terms and disbursement options"
+            src={mockups.home}
+            alt="Bleu app home dashboard showing a balance and payment history"
             fit="contain"
             className="min-h-[320px] rounded-[20px] border border-line bg-tint p-4"
           />

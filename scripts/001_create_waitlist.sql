@@ -1,4 +1,4 @@
--- Create waitlist table for Bleu Bank
+-- Create waitlist table for Bleu
 CREATE TABLE IF NOT EXISTS public.waitlist (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   full_name TEXT NOT NULL,

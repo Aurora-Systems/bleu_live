@@ -1,21 +1,21 @@
-import { Zap, Scale, Globe2 } from 'lucide-react'
+import { Zap, Scale, TrendingUp } from 'lucide-react'
 import { Container } from '@/components/site'
 
 const REASONS = [
   {
     Icon: Zap,
-    title: 'Fast decisions',
-    body: 'A quick, honest answer, often in hours rather than weeks. We know timing is everything when you are running a business.',
+    title: 'One integration',
+    body: 'Connect once and accept every Zimbabwean mobile money wallet, ZimSwitch, Visa and Mastercard, instead of managing a separate setup for each provider.',
+  },
+  {
+    Icon: TrendingUp,
+    title: 'Payments that unlock credit',
+    body: 'We lend directly, based on how money moves through your Bleu account. The more you transact, the better we can back you.',
   },
   {
     Icon: Scale,
     title: 'Fair & transparent',
-    body: 'Clear terms and no hidden fees. You always know exactly what you will repay before you commit to anything.',
-  },
-  {
-    Icon: Globe2,
-    title: 'Built for Africa',
-    body: 'We assess your business, not just your paperwork, using models designed around local market realities.',
+    body: 'Clear pricing on payments and clear terms on loans, so you always know exactly what you are paying before you commit.',
   },
 ]
 
@@ -24,7 +24,7 @@ export function WhyBleuSection() {
     <section className="py-[52px]">
       <Container>
         <h2 className="m-0 mb-[34px] text-center font-display text-[28px] font-normal leading-[1.08] text-ink sm:text-[34px] lg:text-[40px]">
-          Why borrow from Bleu
+          Why businesses choose Bleu
         </h2>
         <div className="grid grid-cols-1 gap-[22px] md:grid-cols-3">
           {REASONS.map(({ Icon, title, body }) => (

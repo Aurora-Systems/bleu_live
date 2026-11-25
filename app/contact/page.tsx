@@ -7,7 +7,7 @@ import { Container, PageHero } from '@/components/site'
 import { Mail, Globe, Instagram, Check } from 'lucide-react'
 
 const CONTACT_INFO = [
-  { Icon: Mail, label: 'Email', value: 'hello@bleubank.xyz', href: 'mailto:hello@bleubank.xyz' },
+  { Icon: Mail, label: 'Email', value: 'hello@bleu.co.zw', href: 'mailto:hello@bleu.co.zw' },
   { Icon: Globe, label: 'Website', value: 'bleu.co.zw', href: 'https://bleu.co.zw' },
 ]
 
@@ -65,7 +65,7 @@ export default function ContactPage() {
         <PageHero
           eyebrow="Contact"
           title="Let’s talk"
-          subtitle="Whether you’re a business, an individual, or a potential partner, we’re here to help."
+          subtitle="Want early access to Bleu Payments, or have a question about a loan? We’re here to help."
         />
 
         <section className="pb-20 pt-[34px]">
@@ -184,9 +184,8 @@ export default function ContactPage() {
                           onChange={(e) => setFormData({ ...formData, user_type: e.target.value })}
                           className={`${inputClass} appearance-none`}
                         >
-                          <option value="business">Business</option>
+                          <option value="business">Business / merchant</option>
                           <option value="individual">Individual</option>
-                          <option value="partner">Partner</option>
                           <option value="other">Other</option>
                         </select>
                       </div>
@@ -203,7 +202,7 @@ export default function ContactPage() {
                         value={formData.subject}
                         onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                         className={inputClass}
-                        placeholder="How can we help?"
+                        placeholder="e.g. Early access to Bleu Payments"
                       />
                     </div>
 

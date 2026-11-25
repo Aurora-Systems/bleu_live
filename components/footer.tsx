@@ -5,7 +5,6 @@ import { APP_URL } from '@/lib/site'
 const NAV_LINKS = [
   { href: '/business', label: 'Business' },
   { href: '/individuals', label: 'Individuals' },
-  { href: '/partners', label: 'Partners' },
   { href: '/roadmap', label: 'Roadmap' },
   { href: '/contact', label: 'Contact' },
 ]
@@ -30,9 +29,9 @@ export function Footer() {
               Bleu
             </div>
             <p className="m-0 mb-5 max-w-[300px] font-sans text-[14px] font-medium leading-[1.65] text-cloud-2">
-              Financial access for Africa: loans, advice, and real access to
-              capital for businesses and individuals, without the traditional
-              barriers.
+              Payments for Zimbabwean business: one checkout for every mobile
+              money wallet and card, online, in store and on your website,
+              plus the business finance to help you grow.
             </p>
             <div className="flex gap-2.5">
               {SOCIALS.map(({ href, label, Icon }) => (
@@ -92,8 +91,8 @@ export function Footer() {
               Get in touch
             </div>
             <div className="flex flex-col gap-3 font-sans text-[14px] font-medium leading-[1.5]">
-              <a href="mailto:hello@bleubank.xyz" className="text-brand-soft">
-                hello@bleubank.xyz
+              <a href="mailto:hello@bleu.co.zw" className="text-brand-soft">
+                hello@bleu.co.zw
               </a>
               <a
                 href="https://bleu.co.zw"
@@ -109,7 +108,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="mt-1.5 inline-block rounded-lg bg-brand px-5 py-[11px] text-center font-sans text-[13px] font-bold leading-none text-white transition-colors hover:bg-brand-bright"
               >
-                Apply on the app
+                Apply for a loan
               </a>
             </div>
           </div>
