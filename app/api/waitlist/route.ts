@@ -18,8 +18,8 @@ export async function POST(request: Request) {
       VALUES (${full_name}, ${email}, ${phone}, ${user_type})
     `
 
-    await resend.emails.send({
-      from: 'Bleu <noreply@updates.bleubank.xyz>',
+    const { error: emailError } = await resend.emails.send({
+      from: 'Bleu <noreply@updates.bleu.co.zw>',
       to: 'inquiries@bleubank.xyz',
       subject: `New Waitlist Sign-up: ${full_name}`,
       html: `
@@ -32,6 +32,8 @@ export async function POST(request: Request) {
         </table>
       `,
     })
+    // Resend returns send failures (e.g. an unverified domain) instead of throwing.
+    if (emailError) console.error('Waitlist notification email failed:', emailError)
 
     return NextResponse.json({ success: true }, { status: 201 })
   } catch (err: unknown) {
